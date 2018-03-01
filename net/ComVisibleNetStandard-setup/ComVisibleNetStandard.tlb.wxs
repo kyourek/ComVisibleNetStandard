@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER" />
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ComVisibleNetStandard.tlb">
+            <Component Id="cmpCAA8975CB7980F81E84153CD9E9EE5CD" Directory="INSTALLFOLDER" Guid="*">
+                <File Id="fil95720B3C7B0AD9CEF9DEE366E31F5A84" KeyPath="yes" Source="$(var.InpDir)\ComVisibleNetStandard.tlb">
+                    <TypeLib Id="{1D92945C-11BE-352E-A9DC-582684175F6A}" Description="ComVisibleNetStandard" HelpDirectory="INSTALLFOLDER" Language="0" MajorVersion="1" MinorVersion="0">
+                        <Interface Id="{A6D6728D-F990-4330-B55C-296E13112601}" Name="IComVisibleObject" ProxyStubClassId32="{00020420-0000-0000-C000-000000000046}" />
+                    </TypeLib>
+                </File>
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>

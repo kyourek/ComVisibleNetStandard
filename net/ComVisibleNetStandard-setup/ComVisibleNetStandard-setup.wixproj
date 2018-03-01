@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.10</ProductVersion>
+    <ProjectGuid>cc246099-0bcc-407c-89c9-288d8f335287</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>ComVisibleNetStandard-setup</OutputName>
+    <OutputType>Package</OutputType>
+    <Name>ComVisibleNetStandard-setup</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ComVisibleNetStandard.dll.wxs" />
+    <Compile Include="ComVisibleNetStandard.tlb.wxs" />
+    <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComVisibleNetStandard\ComVisibleNetStandard.csproj">
+      <Name>ComVisibleNetStandard</Name>
+      <Project>{1f7ef1dc-414e-4c6f-877c-28973fa1a623}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+  <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
+    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
+  </Target>
+  <Target Name="BeforeBuild">
+    <PropertyGroup>
+      <DefineConstants>InpDir=.</DefineConstants>
+    </PropertyGroup>
+    <Copy SourceFiles="$(SolutionDir)ComVisibleNetStandard\bin\$(Configuration)\netstandard2.0\ComVisibleNetStandard.dll" DestinationFolder="$(ProjectDir)" />
+    <Exec Command="&quot;$(SDK40ToolsPath)TlbExp.exe&quot; &quot;$(ProjectDir)ComVisibleNetStandard.dll&quot; /win32 /out:&quot;$(ProjectDir)ComVisibleNetStandard.tlb&quot;" />
+    <HeatFile ComponentGroupName="ComVisibleNetStandard.dll" OutputFile="$(ProjectDir)ComVisibleNetStandard.dll.wxs" ToolPath="$(WixToolPath)" RunAsSeparateProcess="true" AutogenerateGuids="true" SuppressRootDirectory="true" DirectoryRefId="INSTALLFOLDER" File="$(ProjectDir)ComVisibleNetStandard.dll" PreprocessorVariable="var.InpDir" />
+    <HeatFile ComponentGroupName="ComVisibleNetStandard.tlb" OutputFile="$(ProjectDir)ComVisibleNetStandard.tlb.wxs" ToolPath="$(WixToolPath)" RunAsSeparateProcess="true" AutogenerateGuids="true" SuppressRootDirectory="true" DirectoryRefId="INSTALLFOLDER" File="$(ProjectDir)ComVisibleNetStandard.tlb" PreprocessorVariable="var.InpDir" />
+  </Target>
+</Project>

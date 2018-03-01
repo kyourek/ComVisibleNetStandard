@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="ComVisibleNetStandard-setup" Language="1033" Version="1.0.0.0" Manufacturer="ComVisibleNetStandard" UpgradeCode="4b77fafe-3a8c-4f9f-a186-57740d0c5b87">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="ComVisibleNetStandard-setup" Level="1">
+      <ComponentGroupRef Id="ComVisibleNetStandard.dll"/>
+      <ComponentGroupRef Id="ComVisibleNetStandard.tlb"/>
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="ComVisibleNetStandard" />
+			</Directory>
+		</Directory>
+	</Fragment>
+</Wix>

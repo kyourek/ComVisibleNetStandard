@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER" />
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ComVisibleNetStandard.dll">
+            <Component Id="cmp35B7E705855C8878B114029A26E25A05" Directory="INSTALLFOLDER" Guid="*">
+                <Class Id="{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}" Context="InprocServer32" Description="ComVisibleNetStandard.ComVisibleObject" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="ComVisibleNetStandard.ComVisibleObject" Description="ComVisibleNetStandard.ComVisibleObject" />
+                </Class>
+                <File Id="fil8C149CCEE2C8BE9D2635F9B1DB359B1E" KeyPath="yes" Source="$(var.InpDir)\ComVisibleNetStandard.dll" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32\1.0.0.0" Name="Class" Value="ComVisibleNetStandard.ComVisibleObject" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32\1.0.0.0" Name="Assembly" Value="ComVisibleNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32\1.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32\1.0.0.0" Name="CodeBase" Value="file:///[#fil8C149CCEE2C8BE9D2635F9B1DB359B1E]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32" Name="Class" Value="ComVisibleNetStandard.ComVisibleObject" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32" Name="Assembly" Value="ComVisibleNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{74AEB269-82E8-4B73-BBE6-57A28A0E7DFD}\InprocServer32" Name="CodeBase" Value="file:///[#fil8C149CCEE2C8BE9D2635F9B1DB359B1E]" Type="string" Action="write" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>
