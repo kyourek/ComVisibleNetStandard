@@ -1,1 +1,5 @@
 Prerequisites include Visual Studio 2017, the WiX toolset (version 3.11), and the WiX Visual Studio extension.
+
+Open ComVisibleNetStandard.sln and build it in Visual Studio.
+Run the ComVisibleNetStandard-setup.msi file in the output directory of ComVisibleNetStandard-setup.
+Open ComVisibleNetStandardVB6.vbp and run the program to verify COM visibility.
